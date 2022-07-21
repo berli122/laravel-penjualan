@@ -24,7 +24,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Harga Satuan</label>
-                            <input type="number" class="form-control " name="harga_satuan" value="{{ number_format($barang->harga_satuan,0,",",".") }}"
+                            <input type="number" class="form-control " name="harga_satuan" value="{{ $barang->harga_satuan}}"
                                 readonly>
                         </div>
                         <div class="mb-3">
@@ -32,11 +32,11 @@
                             <input type="number" class="form-control" name="jumlah_barang" value="{{ $barang->jumlah_barang }}"
                                 readonly>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Total Harga</label>
-                            <input type="number" class="form-control" name="total_harga" value="{{ number_format($barang->total_harga,0,",",".") }}"
-                                readonly>
-                        </div>
+                        <h3>
+                            <b>
+                                Rp. {{ number_format($barang->total_harga,0,",",".") }}
+                            </b>
+                        </h3>
                         <div class="mb-3">
                             <div class="d-grid gap-2">
                                 <a href="{{ route('toko.index') }}" class="btn btn-primary" type="submit">Kembali</a>

@@ -27,3 +27,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // route siswa
 Route::resource('siswa', SiswaController::class);
 Route::resource('toko', BarangController::class);
+
+Route::get('test-tamplate', function() {
+    return view('layouts.admin');
+});
