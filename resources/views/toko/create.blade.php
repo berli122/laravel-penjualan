@@ -7,10 +7,10 @@
                 @include('layouts/_flash')
                 <div class="card">
                     <div class="card-header">
-                        Data Siswa
+                        Data Barang
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('barang.store') }}" method="post">
+                        <form action="{{ route('toko.store') }}" method="post">
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label">Nama Pembeli</label>
@@ -44,16 +44,18 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Harga Satuan</label>
-                                <input type="number" class="form-control  @error('harga_satuan') is-invalid @enderror" name="harga_satuan">
+                                <input type="number" class="form-control  @error('harga_satuan') is-invalid @enderror" 
+                                    name="harga_satuan">
                                 @error('harga_satuan')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
+                            </div> 
                             <div class="mb-3">
                                 <label class="form-label">Jumlah Barang</label>
-                                <input type="number" class="form-control  @error('jumlah_barang') is-invalid @enderror" name="jumlah_barang">
+                                <input type="number" class="form-control  @error('jumlah_barang') is-invalid @enderror" 
+                                    name="jumlah_barang">
                                 @error('jumlah_barang')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

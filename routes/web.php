@@ -26,4 +26,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // route siswa
 Route::resource('siswa', SiswaController::class);
-Route::resource('barang', BarangController::class);
+Route::resource('toko', BarangController::class);

@@ -20,7 +20,7 @@ class BarangController extends Controller
     {
         //menampilkan semua data dari model Siswa
         $barang = Barang::all();
-        return view('barang.index', compact('barang'));
+        return view('toko.index', compact('barang'));
     }
 
     /**
@@ -31,7 +31,7 @@ class BarangController extends Controller
     public function create()
     {
         //
-        return view('barang.create');
+        return view('toko.create');
     }
 
     /**
@@ -48,20 +48,18 @@ class BarangController extends Controller
             'tgl_pembelian' => 'required',
             'nama_barang' => 'required',
             'harga_satuan' => 'required',
-            'tgl_lahir' => 'required',
-            'harga_satuan' => 'required',
+            'jumlah_barang' => 'required',
         ]);
 
         $barang = new Barang();
         $barang->nama_pembeli = $request->nama_pembeli;
-        $barang->tanggal_pembelian = $request->tanggal_pembelian;
-        $barang->jenis_kelamin = $request->jenis_kelamin;
+        $barang->tgl_pembelian = $request->tgl_pembelian;
+        $barang->nama_barang = $request->nama_barang;
         $barang->harga_satuan = $request->harga_satuan;
-        $barang->tgl_lahir = $request->tgl_lahir;
-        $barang->harga_satuan = $request->harga_satuan;
+        $barang->jumlah_barang = $request->jumlah_barang;
+        $barang->total_harga = $barang->jumlah_barang * $barang->harga_satuan;
         $barang->save();
-        return redirect()->route('barang.index')
-            ->with('success', 'Data berhasil dibuat!');
+        return redirect()->route('toko.index')->with('success', 'Data berhasil dibuat!');
     }
 
     /**
@@ -72,8 +70,8 @@ class BarangController extends Controller
      */
     public function show($id)
     {
-        $siswa = Barang::findOrFail($id);
-        return view('barang.show', compact('barang'));
+        $barang = Barang::findOrFail($id);
+        return view('toko.show', compact('barang'));
     }
 
     /**
@@ -85,7 +83,7 @@ class BarangController extends Controller
     public function edit($id)
     {
         $barang = Barang::findOrFail($id);
-        return view('barang.edit', compact('barang'));
+        return view('toko.edit', compact('barang'));
 
     }
 
@@ -101,23 +99,22 @@ class BarangController extends Controller
         // Validasi
         $validated = $request->validate([
             'nama_pembeli' => 'required',
-            'nis' => 'required|max:255',
-            'jenis_kelamin' => 'required',
-            'agama' => 'required',
-            'tgl_lahir' => 'required',
+            'tgl_pembelian' => 'required',
+            'nama_barang' => 'required',
             'harga_satuan' => 'required',
+            'jumlah_barang' => 'required',
         ]);
 
         $barang = Barang::findOrFail($id);
         $barang->nama_pembeli = $request->nama_pembeli;
-        $barang->nis = $request->nis;
-        $barang->jenis_kelamin = $request->jenis_kelamin;
-        $barang->agama = $request->agama;
-        $barang->tgl_lahir = $request->tgl_lahir;
+        $barang->tgl_pembelian = $request->tgl_pembelian;
+        $barang->nama_barang = $request->nama_barang;
         $barang->harga_satuan = $request->harga_satuan;
+        $barang->jumlah_barang = $request->jumlah_barang;
+        $barang->total_harga = $request->total_harga;
+        $barang->total_harga = $barang->jumlah_barang * $barang->harga_satuan;
         $barang->save();
-        return redirect()->route('barang.index')
-            ->with('success', 'Data berhasil diedit!');
+        return redirect()->route('toko.index')->with('success', 'Data berhasil diedit!');
     }
 
     /**
@@ -130,7 +127,7 @@ class BarangController extends Controller
     {
         $barang = Barang::findOrFail($id);
         $barang->delete();
-        return redirect()->route('barang.index')
-            ->with('success', 'Data berhasil dihapus!');
+        return redirect()->route('toko.index')->with('success', 'Data berhasil dihapus!');
     }
 }
+

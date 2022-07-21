@@ -7,8 +7,8 @@
                 @include('layouts/_flash')
                 <div class="card">
                     <div class="card-header">
-                        Data Siswa
-                        <a href="{{ route('barang.create') }}" class="btn btn-sm btn-primary" style="float: right">
+                        Data Barang
+                        <a href="{{ route('toko.create') }}" class="btn btn-sm btn-primary" style="float: right">
                             Tambah Data
                         </a>
                     </div>
@@ -36,18 +36,18 @@
                                             <td>{{ $data->nama_pembeli }}</td>
                                             <td>{{ date('d M Y', strtotime($data->tgl_pembelian)) }}</td>
                                             <td>{{ $data->nama_barang }}</td>
-                                            <td>{{ $data->harga_satuan }}</td>
-                                            <td>{{ $data->jumlah_barang }}</td>
-                                            <td>{{ $data->total_harga }}</td>
+                                            <td>{{ number_format($data->harga_satuan,0,",",".") }}</td>
+                                            <td>{{ number_format($data->jumlah_barang) }}</td>
+                                            <td>{{ number_format($data->total_harga,0,",",".") }}</td>
                                             <td>
-                                                <form action="{{ route('barang.destroy', $data->id) }}" method="post">
+                                                <form action="{{ route('toko.destroy', $data->id) }}" method="post">
                                                     @csrf
                                                     @method('delete')
-                                                    <a href="{{ route('barang.edit', $data->id) }}"
+                                                    <a href="{{ route('toko.edit', $data->id) }}"
                                                         class="btn btn-sm btn-outline-success">
                                                         Edit
                                                     </a> |
-                                                    <a href="{{ route('barang.show', $data->id) }}"
+                                                    <a href="{{ route('toko.show', $data->id) }}"
                                                         class="btn btn-sm btn-outline-warning">
                                                         Show
                                                     </a> |
