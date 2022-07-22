@@ -25,9 +25,18 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // route siswa
-Route::resource('siswa', SiswaController::class);
-Route::resource('toko', BarangController::class);
 
-Route::get('test-tamplate', function() {
-    return view('layouts.admin');
-});
+// Route::get('test-tamplate', function() {
+    //     return view('layouts.admin');
+    // });
+    
+    Route::group(['prefix' => 'admin', 'middleware' => ['auth']],
+    
+    function() {
+        Route::get('/', function() {
+            return view('admin.index');
+        });
+        Route::resource('siswa', SiswaController::class);
+        Route::resource('toko', BarangController::class);
+
+    });
