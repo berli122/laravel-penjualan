@@ -49,7 +49,6 @@
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Siswa
-                <span class="right badge badge-danger">New</span>
               </p>
             </a>
           </li>
@@ -58,7 +57,14 @@
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Toko
-                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('wali.index')}}" class="nav-link {{ Request::is('admin/wali*') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Wali
               </p>
             </a>
           </li>

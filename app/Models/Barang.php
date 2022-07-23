@@ -11,4 +11,6 @@ class Barang extends Model
     public $fillable = ['nama_pembeli', 'tgl_pembelian', 'nama_barang', 'harga_satuan', 'jumlah_barang'];
 
     public $timestamps = true;
+
+    
 }

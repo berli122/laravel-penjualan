@@ -3,6 +3,7 @@
 // panggil controller Siswa
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\WaliController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,5 +39,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
         });
         Route::resource('siswa', SiswaController::class);
         Route::resource('toko', BarangController::class);
+        Route::resource('wali', WaliController::class);
+
 
     });
